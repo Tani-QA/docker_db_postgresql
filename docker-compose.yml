@@ -1,24 +1,18 @@
 version: '3.9'
-
 services:
-
   postgres:
     container_name: postgres
     image: postgres:15.6-alpine3.18
     restart: always
     environment:
-      POSTGRES_DB: dbpostgres
+      POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-    #  PGDATA: "/var/lib/postgresql/data/pgdata"
+      PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
     # - ../2. Init Database:/docker-entrypoint-initdb.d
     #  - postgres-data:/var/lib/postgresql/data
-      - ./postgres-data:/var/lib/postgresql/data
+    #  - ./postgres-data:/var/lib/postgresql/data
+      - .postgres-data:/var/lib/postgresql/data
     ports:
-      - "54320:5432"
-
-
-
-     
-  
+      - "6543:5432"
